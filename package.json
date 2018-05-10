@@ -1,0 +1,37 @@
+{
+  "name": "sku_hash",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Seeker0/sku_hash.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Seeker0/sku_hash/issues"
+  },
+  "homepage": "https://github.com/Seeker0/sku_hash#readme",
+  "directories": {
+    "lib": "lib"
+  },
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-session": "^2.0.0-beta.3",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "express-flash-messages": "^0.1.1",
+    "express-handlebars": "^3.0.0",
+    "express-method-override-get-post-support": "^1.0.1",
+    "load-helpers": "^1.0.1",
+    "lodash": "^4.17.10",
+    "md5": "^2.2.1",
+    "method-override": "^2.3.10",
+    "morgan": "^1.9.0",
+    "morgan-toolkit": "^1.2.2"
+  }
+}
