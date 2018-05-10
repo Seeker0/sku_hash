@@ -24,55 +24,41 @@ const existingSSNTest = (db, val) =>
 const existingHashTest = (db, val) => db.some(e => e.hash === val);
 
 //Transform a letter into it's corresponding number
-const letterToNumber = val => {
-  return val.charCodeAt(0) - 96;
-};
+const letterToNumber = val => val.charCodeAt(0) - 96;
 
 //Transform a number into it's corresponding letter
-const numberToLetter = val => {
-  return String.fromCharCode(96 + val).toUpperCase();
-};
+const numberToLetter = val => String.fromCharCode(96 + val).toUpperCase();
 
 //Decides whether the next value in the new hash
 //will be a number or letter and invokes the appropriate
 //method.
-const hashCombiner = (val1, val2) => {
-  if (Number(val1) === 0 || Number(val1)) {
-    return newNumber(val1, val2);
-  }
-  return newLetter(val1, val2);
-};
+const hashCombiner = (val1, val2) =>
+  Number(val1) === 0 || Number(val1)
+    ? newNumber(val1, val2)
+    : newLetter(val1, val2);
 
 //Method that ensures that all values added to the
 //hash are a single digit only
 //-- Ensures the new hash will remain less than
 //18 characters in length
-const singleDigit = (val1, val2) => {
-  if (val1 + val2 >= 10) {
-    return Math.floor((val1 + val2) / 2);
-  }
-  return val1 + val2;
-};
+const singleDigit = (val1, val2) =>
+  val1 + val2 >= 10 ? Math.floor((val1 + val2) / 2) : val1 + val2;
 
 //Tests the conditions under which to call the
 //next method to generate the new number to be added to the
 //current hash.
-const newNumber = (val1, val2) => {
-  if (Number(val2) === 0 || Number(val2)) {
-    return singleDigit(Number(val1), Number(val2));
-  }
-  return singleDigit(Number(val1), letterToNumber(val2));
-};
+const newNumber = (val1, val2) =>
+  Number(val2) === 0 || Number(val2)
+    ? singleDigit(Number(val1), Number(val2))
+    : singleDigit(Number(val1), letterToNumber(val2));
 
 //Tests the conditions under which to call
 //the next method to generate the new letter
 // to be added to the current hash.
-const newLetter = (val1, val2) => {
-  if (Number(val2) === 0 || Number(val2)) {
-    return numberToLetter(letterToNumber(val1) + Number(val2));
-  }
-  return numberToLetter(letterToNumber(val1) + letterToNumber(val2));
-};
+const newLetter = (val1, val2) =>
+  Number(val2) === 0 || Number(val2)
+    ? numberToLetter(letterToNumber(val1) + Number(val2))
+    : numberToLetter(letterToNumber(val1) + letterToNumber(val2));
 
 //The main hashing function. Sets the needed
 //variables, iterates through the split serial-number,
